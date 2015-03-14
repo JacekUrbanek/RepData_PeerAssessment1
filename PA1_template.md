@@ -14,7 +14,7 @@ download.file(url,'activity.zip', method='curl')
 unzip('activity.zip')
 ```
 
-Now, I'll read the data file. Additionally, I'll change the type of 'date' collumn to data-type "Date"
+Now, I'll read the data file. Additionally, I'll change the type of 'date' column to data-type "Date"
 
 
 ```r
@@ -62,7 +62,7 @@ median(steps_per_day, na.rm = T)
 
 ## What is the average daily activity pattern?
 
-First, let's calculate daily activity patern.
+First, let's calculate daily activity pattern.
 
 
 ```r
@@ -96,7 +96,7 @@ abline(v = max_steps_index, col = 'red', lty = 2)
 
 ## Imputing missing values
 
-Here, I'll check the number of missing values for each collumn.
+Here, I'll check the number of missing values for each column.
 
 
 ```r
@@ -207,7 +207,7 @@ weekend_step_pattern = tapply(data_weekend$steps,data_weekend$interval,mean)
 weekday_step_pattern = tapply(data_weekday$steps,data_weekday$interval,mean)
 ```
 
-... and plot. For comparision purposes I'll set up the same limits on 'y' axes on both plots.
+... and plot. For comparison purposes I'll set up the same limits on 'y' axes on both plots.
 
 
 ```r
@@ -218,5 +218,7 @@ plot(weekday_step_pattern, type='l', main = 'weekday', xlab = 'interval', ylab =
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-20-1.png) 
+
+
 
 

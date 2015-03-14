@@ -63,7 +63,7 @@ url = 'https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip'
 
 download.file(url,'activity.zip', method='curl')
 unzip('activity.zip')</code></pre>
-<p>Now, I’ll read the data file. Additionally, I’ll change the type of ‘date’ collumn to data-type “Date”</p>
+<p>Now, I’ll read the data file. Additionally, I’ll change the type of ‘date’ column to data-type “Date”</p>
 <pre class="r"><code>data = read.csv('activity.csv')
 data$date = as.Date(data$date)</code></pre>
 </div>
@@ -82,7 +82,7 @@ data$date = as.Date(data$date)</code></pre>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
-<p>First, let’s calculate daily activity patern.</p>
+<p>First, let’s calculate daily activity pattern.</p>
 <pre class="r"><code>daily_step_pattern = tapply(data$steps,data$interval,mean, na.rm = T)</code></pre>
 <p>Next, I’ll calculate which 5-minute interval, on average across all days in the dataset, contains the maximum number of steps.</p>
 <pre class="r"><code>max_steps_index = which.max(daily_step_pattern)
@@ -98,7 +98,7 @@ abline(v = max_steps_index, col = 'red', lty = 2)</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
-<p>Here, I’ll check the number of missing values for each collumn.</p>
+<p>Here, I’ll check the number of missing values for each column.</p>
 <pre class="r"><code>NAs = is.na(data)
 colSums(NAs)</code></pre>
 <pre><code>##    steps     date interval 
@@ -139,7 +139,7 @@ data_weekday = data_filled[data_filled$WD == 'weekday',]</code></pre>
 <p>Here, I’ll calculate two separate daily activity patterns for weekdays and weekends…</p>
 <pre class="r"><code>weekend_step_pattern = tapply(data_weekend$steps,data_weekend$interval,mean)
 weekday_step_pattern = tapply(data_weekday$steps,data_weekday$interval,mean)</code></pre>
-<p>… and plot. For comparision purposes I’ll set up the same limits on ‘y’ axes on both plots.</p>
+<p>… and plot. For comparison purposes I’ll set up the same limits on ‘y’ axes on both plots.</p>
 <pre class="r"><code>par(mfrow=c(2,1), mar = c(4,3,2,3))
 
 plot(weekend_step_pattern, type='l', main = 'weekend', xlab = 'interval', ylab = 'steps', ylim = c(0,240))
